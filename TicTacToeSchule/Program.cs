@@ -1,33 +1,33 @@
-﻿string rawdata = "O;X;O;X;O;X;X;O;O".ToLower();
+string rawdata = "O;X;O;X;O;X;X;O;O".ToLower();
 string[] data = rawdata.Split(";");
 
-string x1 = "█▄▄█";
-string x2 = " ██ ";
-string x3 = "█▀▀█";
+string x1 = "═╗ ╔═";
+string x2 = " ╚╦╝ ";
+string x3 = " ╔╩╗ ";
+string x4 = "═╝ ╚═";
 
-string o1 = "████";
-string o2 = "█  █";
-string o3 = "████";
+string o1 = " ╔═╗ ";
+string o2 = "╔╝ ╚╗";
+string o3 = "╚╗ ╔╝";
+string o4 = " ╚═╝ ";
+
 int counter = 0;
 for (int x = 0; x < 4; x++)
 {
     counter += 1;
-    for (int i = 0; i < 6; i++)
-    {
-       
 
+    for (int i = 0; i < 9; i++)
+    {
         switch (data[i])
         {
             case "x": print("x"); break;
             case "o": print("o"); break;
-
         }
     }
-    Console.Write("\n");
-
+    Console.WriteLine();
 }
 
-    Console.WriteLine("");
+Console.WriteLine("");
 
 
 
