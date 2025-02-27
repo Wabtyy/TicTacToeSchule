@@ -1,0 +1,14 @@
+C:\Users\muellerj\source\repos\TicTacToeSchule\TicTacToeSchule\bin\Debug\net8.0\TicTacToeSchule.exe
+C:\Users\muellerj\source\repos\TicTacToeSchule\TicTacToeSchule\bin\Debug\net8.0\TicTacToeSchule.deps.json
+C:\Users\muellerj\source\repos\TicTacToeSchule\TicTacToeSchule\bin\Debug\net8.0\TicTacToeSchule.runtimeconfig.json
+C:\Users\muellerj\source\repos\TicTacToeSchule\TicTacToeSchule\bin\Debug\net8.0\TicTacToeSchule.dll
+C:\Users\muellerj\source\repos\TicTacToeSchule\TicTacToeSchule\bin\Debug\net8.0\TicTacToeSchule.pdb
+C:\Users\muellerj\source\repos\TicTacToeSchule\TicTacToeSchule\obj\Debug\net8.0\TicTacToeSchule.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\muellerj\source\repos\TicTacToeSchule\TicTacToeSchule\obj\Debug\net8.0\TicTacToeSchule.AssemblyInfoInputs.cache
+C:\Users\muellerj\source\repos\TicTacToeSchule\TicTacToeSchule\obj\Debug\net8.0\TicTacToeSchule.AssemblyInfo.cs
+C:\Users\muellerj\source\repos\TicTacToeSchule\TicTacToeSchule\obj\Debug\net8.0\TicTacToeSchule.csproj.CoreCompileInputs.cache
+C:\Users\muellerj\source\repos\TicTacToeSchule\TicTacToeSchule\obj\Debug\net8.0\TicTacToeSchule.dll
+C:\Users\muellerj\source\repos\TicTacToeSchule\TicTacToeSchule\obj\Debug\net8.0\refint\TicTacToeSchule.dll
+C:\Users\muellerj\source\repos\TicTacToeSchule\TicTacToeSchule\obj\Debug\net8.0\TicTacToeSchule.pdb
+C:\Users\muellerj\source\repos\TicTacToeSchule\TicTacToeSchule\obj\Debug\net8.0\TicTacToeSchule.genruntimeconfig.cache
+C:\Users\muellerj\source\repos\TicTacToeSchule\TicTacToeSchule\obj\Debug\net8.0\ref\TicTacToeSchule.dll
