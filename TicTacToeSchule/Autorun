@@ -43,7 +43,9 @@ while (true)
         Console.WriteLine();
     }
     counter = 0;
+    Console.ForegroundColor = ConsoleColor.DarkYellow;
     Console.WriteLine("═══════════════════════════════════");
+    Console.ForegroundColor = ConsoleColor.White;
     for (int x = 0; x < 4; x++)
     {
         counter += 1;
@@ -59,7 +61,9 @@ while (true)
         }
         Console.WriteLine();
     }
+    Console.ForegroundColor = ConsoleColor.DarkYellow;
     Console.WriteLine("═══════════════════════════════════");
+    Console.ForegroundColor = ConsoleColor.White;
     counter = 0;
     for (int x = data.Length / 2 + 1; x < data.Length; x++)
     {
@@ -88,27 +92,37 @@ while (true)
         switch (str)
         {
             case "x":
+                Console.ForegroundColor = ConsoleColor.Green;
                 if (counter == 1) { Console.Write(x1 + "  "); }
                 if (counter == 2) { Console.Write(x2 + "  "); }
                 if (counter == 3) { Console.Write(x3 + "  "); }
                 if (counter == 4) { Console.Write(x4 + "  "); }
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 if (secondcounter != 3) { Console.Write("║"); } else { secondcounter = 0; }
+                Console.ForegroundColor = ConsoleColor.White;
                 break;
 
             case "o":
+                Console.ForegroundColor = ConsoleColor.Red;
                 if (counter == 1) { Console.Write(o1 + "  "); }
                 if (counter == 2) { Console.Write(o2 + "  "); }
                 if (counter == 3) { Console.Write(o3 + "  "); }
                 if (counter == 4) { Console.Write(o4 + "  "); }
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 if (secondcounter != 3) { Console.Write("║"); } else { secondcounter = 0; }
+                Console.ForegroundColor = ConsoleColor.White;
                 break;
 
             case " ":
+                
                 if (counter == 1) { Console.Write("           "); }
                 if (counter == 2) { Console.Write("           "); }
                 if (counter == 3) { Console.Write("           "); }
                 if (counter == 4) { Console.Write("           "); }
+
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 if (secondcounter != 3) { Console.Write("║"); } else { secondcounter = 0; }
+                Console.ForegroundColor = ConsoleColor.White;
                 break;
         }
         return "";
