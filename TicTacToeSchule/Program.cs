@@ -72,6 +72,7 @@ menu("input");
 
 void menu(string str)
 {
+   
         switch (str)
         {
             case "input":
@@ -80,6 +81,8 @@ void menu(string str)
             Console.WriteLine("  ╚════════════╝           ╚═══════════╝");
             break;
         }
+    Console.SetCursorPosition(6, 17);
+  
 }
 
 void print(string str) 
