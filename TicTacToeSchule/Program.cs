@@ -1,5 +1,6 @@
 
 
+using System.ComponentModel.Design;
 using System.Security.Cryptography;
 
 string x1 = "   ═╗ ╔═ ",    o1 = "    ╔═╗  ";
@@ -11,6 +12,7 @@ int counter = 1, secondcounter = 0, one = 0, two = 3, three=-1, piece=0;
 string[] data = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 bool realgame = false;
+
 //////////////////////////////////////////////////////
 for (int c = 0; c < 13; c++, one = 0, two = 3, counter = 1, secondcounter = 0)
 { if (three < 4) { three++; } else { Thread.Sleep(c * 35); }
@@ -62,19 +64,20 @@ for (int c = 0; c < 13; c++, one = 0, two = 3, counter = 1, secondcounter = 0)
                 }
                 catch { break; }
             }
-            Console.WriteLine();
         }
         if (three < 4) { Thread.Sleep(20); }
     }
 }
-
+menu("input");
 
 void menu(string str)
 {
         switch (str)
         {
             case "input":
-            Console.WriteLine("╠╬════════════╣            ╠═══════════╬╣");
+            Console.WriteLine(" ╚╦═══════════╩╗           ╠═══════════╣");
+            Console.WriteLine(" ╠╬>           ║           ║           ╠╣");
+            Console.WriteLine("  ╚════════════╝           ╚═══════════╝");
             break;
         }
 }
@@ -125,7 +128,7 @@ secondcounter += 1;
             case "backline":
                     Console.ForegroundColor = ConsoleColor.White;
                     secondcounter -= 1;
-                    if (secondcounter == 3) { secondcounter = 0; Console.Write("║"); }
+                    if (secondcounter == 3) { secondcounter = 0; Console.Write("║\n"); }
             break;
         }
 }
