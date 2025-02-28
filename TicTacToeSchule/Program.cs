@@ -11,7 +11,7 @@ string x4 = "   ═╝ ╚═ ",    o4 = "    ╚═╝  ";
 int counter = 1, secondcounter = 0, one = 0, two = 3, three=-1, piece=0;
 string[] data = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
-bool realgame = false;
+bool realgame = false, spieler=true;
 
 //////////////////////////////////////////////////////
 for (int c = 0; c < 13; c++, one = 0, two = 3, counter = 1, secondcounter = 0)
@@ -76,13 +76,16 @@ void menu(string str)
         switch (str)
         {
             case "input":
-            Console.WriteLine(" ╚╦═══════════╩╗           ╠═══════════╣");
-            Console.WriteLine(" ╠╬>           ║           ║           ╠╣");
-            Console.WriteLine("  ╚════════════╝           ╚═══════════╝");
+            Console.WriteLine(" ╚╦══════╗                 ╚═══╗    ╔══╝");
+            Console.WriteLine("  ╠>     ║                 ╔═══╩════╩══╗");
+                Console.Write("  ╚══════╝                 ║ "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(spieler?"Spieler 1":" Spieler 2"); Console.ForegroundColor = ConsoleColor.White; Console.Write(" ╠╣\n");
+            Console.WriteLine("                           ╚═══════════╝");
             break;
         }
     Console.SetCursorPosition(6, 17);
-  
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.ReadLine();
+    Console.ForegroundColor = ConsoleColor.White;
 }
 
 void print(string str) 
