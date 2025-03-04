@@ -1,8 +1,3 @@
-
-
-using System.ComponentModel.Design;
-using System.Security.Cryptography;
-
 string x1 = "   ═╗ ╔═ ",    o1 = "    ╔═╗  ";
 string x2 = "    ╚╦╝  ",    o2 = "   ╔╝ ╚╗ ";
 string x3 = "    ╔╩╗  ",    o3 = "   ╚╗ ╔╝ ";
@@ -65,7 +60,6 @@ void preprint()
             }
         }
         if (three < 4) { Thread.Sleep(20); }
-    
     }
     if (realgame) { menu("input"); } // wenn es nicht die startaniamtion ist, spieler nach eingabe fragen
 }
@@ -98,17 +92,16 @@ void menu(string str)
     }
     
     Console.ForegroundColor = ConsoleColor.White;
-    Console.Clear();
-    checkwin();
 
     spieler = !spieler;
+    checkwin();
+        Console.Clear();
     preprint();
-
 }
 
 void print(string str) 
 { 
-secondcounter += 1;
+        secondcounter += 1;
 
         switch (str)
         {
@@ -136,12 +129,13 @@ secondcounter += 1;
 
             case " ":
            
-                 if (counter==2&&realgame==true) 
+                    if (counter==2&&realgame==true) 
                     { 
                     Console.Write(" ║"); 
                     Console.ForegroundColor = ConsoleColor.Red; 
                     Console.Write($"     {piece+1}     "); 
-                    Console.ForegroundColor = ConsoleColor.White; }
+                    Console.ForegroundColor = ConsoleColor.White; 
+                    }
                     else
                     {
                     Console.Write($" ║           ");
@@ -178,11 +172,11 @@ void checkwin()
 }
 void Win(bool unendschieden)
 {
-    Console.Clear();
+
 
     if(unendschieden==false)
     {
-        Console.WriteLine(spieler ? "Spieler 1 hat gewonnen" : "Spieler 2 hat gewonnen");
+        Console.WriteLine(!spieler ? "Spieler 1 hat gewonnen" : "Spieler 2 hat gewonnen");
     }
     else
     {
