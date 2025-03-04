@@ -8,16 +8,14 @@ string x2 = "    ╚╦╝  ",    o2 = "   ╔╝ ╚╗ ";
 string x3 = "    ╔╩╗  ",    o3 = "   ╚╗ ╔╝ ";
 string x4 = "   ═╝ ╚═ ",    o4 = "    ╚═╝  ";
 
-int counter = 1, secondcounter = 0, one = 0, two = 3, three=-1, piece=0;
+int counter = 1, secondcounter = 0, one = 0, two = 3, three=-1, piece=0, moves=0;
 string[] data = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 string aa = " ; ; ; ; ; ; ; ; ", Indicator="x";
 bool realgame = false, spieler=true;
 
 //////////////////////////////////////////////////////
-for (int c = 0; c < 13; c++, one = 0, two = 3, counter = 1, secondcounter = 0)
+for (int c = 0; c < 13; c++, one = 0, two = 3, counter = 1, secondcounter = 0) //alles für die startanmation
 { if (three < 4) { three++; } else { Thread.Sleep(c * 35); }
-    
-    
     if (c < 12)
     {
         Random rnd = new Random();
@@ -35,15 +33,10 @@ for (int c = 0; c < 13; c++, one = 0, two = 3, counter = 1, secondcounter = 0)
     else
     {
         Thread.Sleep(200);
-
-        
         data = aa.Split(";");
         realgame = true;
-
     }
-
-        Console.Clear();
-
+    Console.Clear();
     preprint();
 }
 menu("input");
@@ -74,16 +67,17 @@ void preprint()
         if (three < 4) { Thread.Sleep(20); }
     
     }
-    if (realgame) { menu("input"); }
+    if (realgame) { menu("input"); } // wenn es nicht die startaniamtion ist, spieler nach eingabe fragen
 }
 void menu(string str)
 {
+    one = 0; two = 3; counter = 1; secondcounter = 0;
     switch (str)
         {
             case "input":
             Console.WriteLine(" ╚╦══════╗                 ╚═══╗    ╔══╝");
             Console.WriteLine("  ╠>     ║                 ╔═══╩════╩══╗");
-            Console.Write("  ╚══════╝                 ║ "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(spieler?"Spieler 1":" Spieler 2"); Console.ForegroundColor = ConsoleColor.White; Console.Write(" ╠╣\n");
+            Console.Write("  ╚══════╝                 ║ "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(spieler?"Spieler 1":"Spieler 2"); Console.ForegroundColor = ConsoleColor.White; Console.Write(" ╠╣\n");
             Console.WriteLine("                           ╚═══════════╝");
             break;
         }
@@ -91,23 +85,25 @@ void menu(string str)
     Console.ForegroundColor = ConsoleColor.Red;
     switch (Console.ReadLine())
     {
-        case "1": data[0] = spieler ? "x" : "o"; break;
-        case "2": data[1] = spieler ? "x" : "o"; break;
-        case "3": data[2] = spieler ? "x" : "o"; break;
-        case "4": data[3] = spieler ? "x" : "o"; break;
-        case "5": data[4] = spieler ? "x" : "o"; break;
-        case "6": data[5] = spieler ? "x" : "o"; break;
-        case "7": data[6] = spieler ? "x" : "o"; break;
-        case "8": data[7] = spieler ? "x" : "o"; break;
-        case "9": data[8] = spieler ? "x" : "o"; break;
+        case "1": data[0] = spieler ? "x" : "o"; moves++; break;
+        case "2": data[1] = spieler ? "x" : "o"; moves++; break;
+        case "3": data[2] = spieler ? "x" : "o"; moves++; break;
+        case "4": data[3] = spieler ? "x" : "o"; moves++; break;
+        case "5": data[4] = spieler ? "x" : "o"; moves++; break;
+        case "6": data[5] = spieler ? "x" : "o"; moves++; break;
+        case "7": data[6] = spieler ? "x" : "o"; moves++; break;
+        case "8": data[7] = spieler ? "x" : "o"; moves++; break;
+        case "9": data[8] = spieler ? "x" : "o"; moves++; break;
+        default: Console.Clear(); Console.WriteLine("Ungültige eingabe!"); Thread.Sleep(2000); Console.Clear(); preprint();  break;
     }
     
     Console.ForegroundColor = ConsoleColor.White;
     Console.Clear();
     checkwin();
-    one = 0; two = 3; counter = 1; secondcounter = 0;
+
     spieler = !spieler;
     preprint();
+
 }
 
 void print(string str) 
@@ -163,24 +159,35 @@ secondcounter += 1;
 
 void checkwin()
 {
+    
     for (int indcounter = 0; indcounter < 2; indcounter++)
     {
         if (indcounter==1) { Indicator = "x"; } else { Indicator = "o"; }
-        if (data[0] == Indicator && data[1] == Indicator && data[2] == Indicator) { Win(); }
-        if (data[3] == Indicator && data[4] == Indicator && data[5] == Indicator) { Win(); }
-        if (data[6] == Indicator && data[7] == Indicator && data[8] == Indicator) { Win(); }
+        if (data[0] == Indicator && data[1] == Indicator && data[2] == Indicator) { Win(false); }
+        if (data[3] == Indicator && data[4] == Indicator && data[5] == Indicator) { Win(false); }
+        if (data[6] == Indicator && data[7] == Indicator && data[8] == Indicator) { Win(false); }
 
-        if (data[0] == Indicator && data[3] == Indicator && data[6] == Indicator) { Win(); }
-        if (data[1] == Indicator && data[4] == Indicator && data[7] == Indicator) { Win(); }
-        if (data[3] == Indicator && data[5] == Indicator && data[8] == Indicator) { Win(); }
+        if (data[0] == Indicator && data[3] == Indicator && data[6] == Indicator) { Win(false); }
+        if (data[1] == Indicator && data[4] == Indicator && data[7] == Indicator) { Win(false); }
+        if (data[3] == Indicator && data[5] == Indicator && data[8] == Indicator) { Win(false); }
 
-        if (data[0] == Indicator && data[4] == Indicator && data[8] == Indicator) { Win(); }
-        if (data[2] == Indicator && data[4] == Indicator && data[6] == Indicator) { Win(); }
+        if (data[0] == Indicator && data[4] == Indicator && data[8] == Indicator) { Win(false); }
+        if (data[2] == Indicator && data[4] == Indicator && data[6] == Indicator) { Win(false); }
     }
+    if (moves == 9) { Win(true); }
 }
-void Win()
+void Win(bool unendschieden)
 {
     Console.Clear();
-    Console.WriteLine(spieler ? "Spieler 1 hat gewonnen" : "Spieler 2 hat gewonnen");
- 
+
+    if(unendschieden==false)
+    {
+        Console.WriteLine(spieler ? "Spieler 1 hat gewonnen" : "Spieler 2 hat gewonnen");
+    }
+    else
+    {
+        Console.WriteLine("Unendschieden");
+    }
+
+    Console.ReadLine();
 }
