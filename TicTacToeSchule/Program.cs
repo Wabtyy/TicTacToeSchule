@@ -10,7 +10,7 @@ string x4 = "   ═╝ ╚═ ",    o4 = "    ╚═╝  ";
 
 int counter = 1, secondcounter = 0, one = 0, two = 3, three=-1, piece=0;
 string[] data = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-
+string aa = " ; ; ; ; ; ; ; ; ", Indicator="x";
 bool realgame = false, spieler=true;
 
 //////////////////////////////////////////////////////
@@ -34,16 +34,22 @@ for (int c = 0; c < 13; c++, one = 0, two = 3, counter = 1, secondcounter = 0)
     }
     else
     {
-
         Thread.Sleep(200);
-        string a = " ; ; ; ; ; ; ; ; ";
-        data = a.Split(";");
+
+        
+        data = aa.Split(";");
         realgame = true;
 
     }
 
         Console.Clear();
 
+    preprint();
+}
+menu("input");
+
+void preprint()
+{
     for (int z = 0; z < 4; z++, one += 3, two += 3, counter = 1)
     {
         Console.ForegroundColor = ConsoleColor.White;
@@ -66,26 +72,42 @@ for (int c = 0; c < 13; c++, one = 0, two = 3, counter = 1, secondcounter = 0)
             }
         }
         if (three < 4) { Thread.Sleep(20); }
+    
     }
+    if (realgame) { menu("input"); }
 }
-menu("input");
-
 void menu(string str)
 {
-   
-        switch (str)
+    switch (str)
         {
             case "input":
             Console.WriteLine(" ╚╦══════╗                 ╚═══╗    ╔══╝");
             Console.WriteLine("  ╠>     ║                 ╔═══╩════╩══╗");
-                Console.Write("  ╚══════╝                 ║ "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(spieler?"Spieler 1":" Spieler 2"); Console.ForegroundColor = ConsoleColor.White; Console.Write(" ╠╣\n");
+            Console.Write("  ╚══════╝                 ║ "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(spieler?"Spieler 1":" Spieler 2"); Console.ForegroundColor = ConsoleColor.White; Console.Write(" ╠╣\n");
             Console.WriteLine("                           ╚═══════════╝");
             break;
         }
     Console.SetCursorPosition(6, 17);
     Console.ForegroundColor = ConsoleColor.Red;
-    Console.ReadLine();
+    switch (Console.ReadLine())
+    {
+        case "1": data[0] = spieler ? "x" : "o"; break;
+        case "2": data[1] = spieler ? "x" : "o"; break;
+        case "3": data[2] = spieler ? "x" : "o"; break;
+        case "4": data[3] = spieler ? "x" : "o"; break;
+        case "5": data[4] = spieler ? "x" : "o"; break;
+        case "6": data[5] = spieler ? "x" : "o"; break;
+        case "7": data[6] = spieler ? "x" : "o"; break;
+        case "8": data[7] = spieler ? "x" : "o"; break;
+        case "9": data[8] = spieler ? "x" : "o"; break;
+    }
+    
     Console.ForegroundColor = ConsoleColor.White;
+    Console.Clear();
+    checkwin();
+    one = 0; two = 3; counter = 1; secondcounter = 0;
+    spieler = !spieler;
+    preprint();
 }
 
 void print(string str) 
@@ -139,5 +161,26 @@ secondcounter += 1;
         }
 }
 
-    Thread.Sleep(200000);
+void checkwin()
+{
+    for (int indcounter = 0; indcounter < 2; indcounter++)
+    {
+        if (indcounter==1) { Indicator = "x"; } else { Indicator = "o"; }
+        if (data[0] == Indicator && data[1] == Indicator && data[2] == Indicator) { Win(); }
+        if (data[3] == Indicator && data[4] == Indicator && data[5] == Indicator) { Win(); }
+        if (data[6] == Indicator && data[7] == Indicator && data[8] == Indicator) { Win(); }
+
+        if (data[0] == Indicator && data[3] == Indicator && data[6] == Indicator) { Win(); }
+        if (data[1] == Indicator && data[4] == Indicator && data[7] == Indicator) { Win(); }
+        if (data[3] == Indicator && data[5] == Indicator && data[8] == Indicator) { Win(); }
+
+        if (data[0] == Indicator && data[4] == Indicator && data[8] == Indicator) { Win(); }
+        if (data[2] == Indicator && data[4] == Indicator && data[6] == Indicator) { Win(); }
+    }
+}
+void Win()
+{
     Console.Clear();
+    Console.WriteLine(spieler ? "Spieler 1 hat gewonnen" : "Spieler 2 hat gewonnen");
+ 
+}
