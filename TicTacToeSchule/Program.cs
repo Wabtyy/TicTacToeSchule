@@ -9,63 +9,86 @@ string aa = " ; ; ; ; ; ; ; ; ", Indicator="x";
 bool realgame = false, spieler=true;
 
 //////////////////////////////////////////////////////
-for (int c = 0; c < 13; c++, one = 0, two = 3, counter = 1, secondcounter = 0) //alles für die startanmation
-{ if (three < 4) { three++; } else { Thread.Sleep(c * 35); }
-    if (c < 12)
-    {
-        Random rnd = new Random();
-        for (int t = 0; t < 9; t++)
-        {
-            int a = three < 4 ? 1 : rnd.Next(1, 4);
-            switch (a)
-            {
-                case 1: data[t] = "x"; break;
-                case 2: data[t] = "o"; break;
-                case 3: data[t] = " "; break;
-            }
-        }
-    }
-    else
-    {
-        Thread.Sleep(200);
-        data = aa.Split(";");
-        realgame = true;
-    }
-    Console.Clear();
-    preprint();
-}
-menu("input");
-
-void preprint()
+///
+Console.WriteLine("Animation? (y/n)");
+if (Console.ReadLine() == "y")
 {
-    for (int z = 0; z < 4; z++, one += 3, two += 3, counter = 1)
+    for (int c = 0; c < 13; c++, one = 0, two = 3, counter = 1, secondcounter = 0) //alles für die startanmation
     {
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("╠╬════════════╬════════════╬═══════════╬╣");
-        for (int x = 0; x < three; x++, counter += 1)
+        if (three < 4) { three++; } else { Thread.Sleep(c * 35); }
+        if (c < 12)
         {
-            for (int i = one; i < two; i++)
+            Random rnd = new Random();
+            for (int t = 0; t < 9; t++)
             {
-                try
+                int a = three < 4 ? 1 : rnd.Next(1, 4);
+                switch (a)
                 {
-                    piece = i;
-                    switch (data[i])
-                    {
-                        case "x": print("x"); break;
-                        case "o": print("o"); break;
-                        case " ": print(" "); break;
-                    }
+                    case 1: data[t] = "x"; break;
+                    case 2: data[t] = "o"; break;
+                    case 3: data[t] = " "; break;
                 }
-                catch { break; }
             }
         }
-        if (three < 4) { Thread.Sleep(20); }
+        else
+        {
+            Thread.Sleep(200);
+            data = aa.Split(";");
+            realgame = true;
+        }
+
+        Console.Clear();
+        preprint();
     }
-    if (realgame) { menu("input"); } // wenn es nicht die startaniamtion ist, spieler nach eingabe fragen
+    menu("input");
 }
-void menu(string str)
+else
 {
-    one = 0; two = 3; counter = 1; secondcounter = 0;
+    resetvars();
+    Console.Clear();
+    Thread.Sleep(200);
+    data = aa.Split(";");
+    realgame = true;
+
+    preprint();
+
+}
+    void preprint()
+    {
+        for (int z = 0; z < 4; z++, one += 3, two += 3, counter = 1)
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("╠╬════════════╬════════════╬═══════════╬╣");
+            for (int x = 0; x < three; x++, counter += 1)
+            {
+                for (int i = one; i < two; i++)
+                {
+                    try
+                    {
+                        piece = i;
+                        switch (data[i])
+                        {
+                            case "x": print("x"); break;
+                            case "o": print("o"); break;
+                            case " ": print(" "); break;
+                        }
+                    }
+                    catch { break; }
+                }
+            }
+            if (three < 4) { Thread.Sleep(20); }
+        }
+        if (realgame) { menu("input"); } // wenn es nicht die startaniamtion ist, spieler nach eingabe fragen
+    }
+
+void resetvars()
+{
+    one = 0; two = 3; counter = 1; secondcounter = 0; three = 4;
+}
+
+    void menu(string str)
+    {
+    resetvars();
     switch (str)
         {
             case "input":
