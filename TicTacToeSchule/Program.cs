@@ -6,16 +6,17 @@ string x4 = "   ═╝ ╚═ ",    o4 = "    ╚═╝  ";
 bool playagain = true; // erneut spielen funktioniert noch nicht
 while (playagain)
 {
-    playagain = false; // wird noch entfernt
-    bool realgame = false, spieler = true, Aiopponent = true ;
+    playagain = false;
+    Console.Clear();
+    bool realgame = false, spieler = true, Aiopponent = true;
     int counter = 1, secondcounter = 0, one = 0, two = 3, three = -1, piece = 0, moves = 0;
     string[] data = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
     string aa = " ; ; ; ; ; ; ; ; ";
 
 
     //////////////////////////////////////////////////////
-    Console.WriteLine("1vs1 (1) | VS AI (2)");
-    if (Console.ReadLine() == "1" ? Aiopponent = false : Aiopponent = true);
+    Console.Write("1vs1 (1) | VS AI (2) : ");
+    if (Console.ReadLine() == "1" ? Aiopponent = false : Aiopponent = true) ;
     Console.Clear();
     Console.WriteLine("Startanimation? (y/n)");
 
@@ -47,7 +48,7 @@ while (playagain)
             Console.Clear();
             preprint();
         }
-        menu("input");
+        if (!playagain) { menu("input"); } 
     }
     else
     {
@@ -57,32 +58,36 @@ while (playagain)
         realgame = true;
         preprint();
     }
+
     void preprint()
     {
-        for (int z = 0; z < 4; z++, one += 3, two += 3, counter = 1)
+        if (!playagain)
         {
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("╠╬════════════╬════════════╬═══════════╬╣");
-            for (int x = 0; x < three; x++, counter += 1)
+            for (int z = 0; z < 4; z++, one += 3, two += 3, counter = 1)
             {
-                for (int i = one; i < two; i++)
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("╠╬════════════╬════════════╬═══════════╬╣");
+                for (int x = 0; x < three; x++, counter += 1)
                 {
-                    try
+                    for (int i = one; i < two; i++)
                     {
-                        piece = i;
-                        switch (data[i])
+                        try
                         {
-                            case "x": print("x"); break;
-                            case "o": print("o"); break;
-                            case " ": print(" "); break;
+                            piece = i;
+                            switch (data[i])
+                            {
+                                case "x": print("x"); break;
+                                case "o": print("o"); break;
+                                case " ": print(" "); break;
+                            }
                         }
+                        catch { break; }
                     }
-                    catch { break; }
                 }
+                if (three < 4) { Thread.Sleep(20); }
             }
-            if (three < 4) { Thread.Sleep(20); }
-        }
-        if (realgame) { menu("input"); } // wenn es nicht die startaniamtion ist, spieler nach eingabe fragen
+            if (realgame && !playagain) { menu("input"); }
+        }// wenn es nicht die startaniamtion ist, spieler nach eingabe fragen
     }
 
     void resetvars()
@@ -98,14 +103,14 @@ while (playagain)
             case "input":
                 Console.WriteLine(" ╚╦══════╗                 ╚═══╗    ╔══╝");
                 Console.WriteLine("  ╠>     ║                 ╔═══╩════╩══╗");
-                    Console.Write("  ╚══════╝                 ║ "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(spieler ? "Spieler 1" : "Spieler 2"); Console.ForegroundColor = ConsoleColor.White; Console.Write(" ║\n");
+                Console.Write("  ╚══════╝                 ║ "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(spieler ? "Spieler 1" : "Spieler 2"); Console.ForegroundColor = ConsoleColor.White; Console.Write(" ║\n");
                 Console.WriteLine("                           ╚═══════════╝");
                 break;
         }
         Console.SetCursorPosition(6, 17);
         Console.ForegroundColor = ConsoleColor.Red;
 
-        switch (!spieler && Aiopponent? AI() : Console.ReadLine())
+        switch (!spieler && Aiopponent ? AI() : Console.ReadLine())
         {
             case "1": if (data[0] != " ") { wronginput(); break; } data[0] = spieler ? "x" : "o"; moves++; break;
             case "2": if (data[1] != " ") { wronginput(); break; } data[1] = spieler ? "x" : "o"; moves++; break;
@@ -124,20 +129,20 @@ while (playagain)
         spieler = !spieler;
         checkwin();
         Console.Clear();
-        preprint();
+        preprint(); 
     }
 
-    void wronginput() 
-    { 
-        Console.Clear(); 
+    void wronginput()
+    {
+        Console.Clear();
 
-        if(spieler) {
+        if (spieler)
+        {
             Console.WriteLine("Ungültige eingabe!");
             Thread.Sleep(2000);
             Console.Clear();
         }
-        
-        preprint(); 
+        preprint();
     }
 
     void print(string str)
@@ -155,7 +160,7 @@ while (playagain)
                 if (counter == 3) { Console.Write(x3 + "  "); }
                 if (counter == 4) { Console.Write(x4 + "  "); }
                 print("backline");
-                break;
+            break;
 
             case "o":
                 Console.ForegroundColor = ConsoleColor.White;
@@ -166,7 +171,7 @@ while (playagain)
                 if (counter == 3) { Console.Write(o3 + "  "); }
                 if (counter == 4) { Console.Write(o4 + "  "); }
                 print("backline");
-                break;
+            break;
 
             case " ":
 
@@ -182,13 +187,13 @@ while (playagain)
                     Console.Write($" ║           ");
                 }
                 print("backline");
-                break;
+            break;
 
             case "backline":
                 Console.ForegroundColor = ConsoleColor.White;
                 secondcounter -= 1;
                 if (secondcounter == 3) { secondcounter = 0; Console.Write("║\n"); }
-                break;
+            break;
         }
     }
 
@@ -196,42 +201,41 @@ while (playagain)
     {
         foreach (string Indicator in new[] { "x", "o" })
         {
-            if (data[0] == Indicator && data[1] == Indicator && data[2] == Indicator) { Win(false); }
-            if (data[3] == Indicator && data[4] == Indicator && data[5] == Indicator) { Win(false); }
-            if (data[6] == Indicator && data[7] == Indicator && data[8] == Indicator) { Win(false); }
+            if (data[0] == Indicator && data[1] == Indicator && data[2] == Indicator) { Win(false); break; }
+            if (data[3] == Indicator && data[4] == Indicator && data[5] == Indicator) { Win(false); break; }
+            if (data[6] == Indicator && data[7] == Indicator && data[8] == Indicator) { Win(false); break; }
 
-            if (data[0] == Indicator && data[3] == Indicator && data[6] == Indicator) { Win(false); }
-            if (data[1] == Indicator && data[4] == Indicator && data[7] == Indicator) { Win(false); }
-            if (data[3] == Indicator && data[5] == Indicator && data[8] == Indicator) { Win(false); }
+            if (data[0] == Indicator && data[3] == Indicator && data[6] == Indicator) { Win(false); break; }
+            if (data[1] == Indicator && data[4] == Indicator && data[7] == Indicator) { Win(false); break; }
+            if (data[3] == Indicator && data[5] == Indicator && data[8] == Indicator) { Win(false); break; }
 
-            if (data[0] == Indicator && data[4] == Indicator && data[8] == Indicator) { Win(false); }
-            if (data[2] == Indicator && data[4] == Indicator && data[6] == Indicator) { Win(false); }
+            if (data[0] == Indicator && data[4] == Indicator && data[8] == Indicator) { Win(false); break; }
+            if (data[2] == Indicator && data[4] == Indicator && data[6] == Indicator) { Win(false); break; }
         }
         if (moves == 9) { Win(true); }
     }
     void Win(bool unentschieden)
-    {         //clearage
-        string c = "        ║ ";
-        Console.Clear();
-        realgame = false; preprint();
-        Console.WriteLine("        ╔═════╩════════════╩═════╗");//╚══════╝║╔
-        Console.WriteLine(unentschieden ? "        ║ " + "    Unentschieden!" + "     ║" : (!spieler ? "        ║ " + "Spieler 1 hat gewonnen" + " ║" : "        ║ " + "Spieler 2 hat gewonnen" + " ║"));
-        Console.WriteLine("        ╚════════════════════════╝");
-        Console.ReadLine();
-        Console.Clear();
-        Environment.Exit(69); // wird noch entfernt
-        //Console.WriteLine("Erneut spielen?");
-        //resetvars();
-        //if (Console.ReadLine().ToLower() == "y") { playagain = true; } else { playagain = false; }
-        //Console.Clear();
+    {        
+        if(!playagain)
+        {
+            string c = "        ║ ";
+            Console.Clear();
+            realgame = false;
+            preprint();
+            Console.WriteLine("        ╔═════╩════════════╩═════╗");
+            Console.WriteLine(unentschieden ? "        ║ " + "    Unentschieden!" + "     ║" : (!spieler ? "        ║ " + "Spieler 1 hat gewonnen" + " ║" : "        ║ " + "Spieler 2 hat gewonnen" + " ║"));
+            Console.WriteLine("        ╚════════════════════════╝");
+            Console.ReadLine();
+            Console.Clear();
+            playagain = true;
+        }
     }
-
 
     string AI()
     {
         Random rnd = new Random();
-        
-        return rnd.Next(0,9).ToString();
+
+        return rnd.Next(0, 9).ToString();
     }
 }
 //spielende
