@@ -222,9 +222,9 @@ while (playagain)
             Console.Clear();
             realgame = false;
             preprint();
-            Console.WriteLine("        ╔═════╩════════════╩═════╗");
+            Console.WriteLine("       ╠╬═════╩════════════╩═════╬╣");
             Console.WriteLine(unentschieden ? "        ║ " + "    Unentschieden!" + "     ║" : (!spieler ? "        ║ " + "Spieler 1 hat gewonnen" + " ║" : "        ║ " + "Spieler 2 hat gewonnen" + " ║"));
-            Console.WriteLine("        ╚════════════════════════╝");
+            Console.WriteLine("       ╠╬════════════════════════╬╣");
             Console.ReadLine();
             Console.Clear();
             playagain = true;
