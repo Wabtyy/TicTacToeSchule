@@ -9,8 +9,8 @@ while (playagain)
     playagain = false;
     Console.Clear();
     bool realgame = false, spieler = true, Aiopponent = true;
-    int counter = 1, secondcounter = 0, one = 0, two = 3, three = -1, piece = 0, moves = 0;
-    string[] data = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+    int counter = 1, secondcounter = 0, one = 0, two = 3, three = -1, piece = 0, moves = 0, restmoves = 9;
+    string[] data = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }, ai = new string[9];
     string aa = " ; ; ; ; ; ; ; ; ";
 
 
@@ -233,9 +233,15 @@ while (playagain)
 
     string AI()
     {
+        
+        ai = new string[restmoves-1];
         Random rnd = new Random();
-
-        return rnd.Next(0, 9).ToString();
+        for (int aa = 0, bb = 0; aa < 9; aa++) //nach leeren stellen für den zufallsgenerator suchen
+        {
+            if (data[aa] != "x" && data[aa] != "o") { ai[bb] = (aa+1).ToString(); bb++; }
+        }
+        restmoves -= 2;
+        return ai[rnd.Next(0, ai.Length)];
     }
 }
 //spielende
