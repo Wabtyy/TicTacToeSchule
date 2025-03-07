@@ -201,9 +201,9 @@ while (playagain)
         Console.WriteLine("        ╚════════════════════════╝");
         Console.ReadLine();
         Console.Clear();
-
-        Console.WriteLine("Erneut spielen?");
-        resetvars();
+        Environment.Exit(69); // wird noch entfernt
+        //Console.WriteLine("Erneut spielen?");
+        //resetvars();
         //if (Console.ReadLine().ToLower() == "y") { playagain = true; } else { playagain = false; }
         //Console.Clear();
     }
