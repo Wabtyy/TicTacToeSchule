@@ -7,14 +7,18 @@ bool playagain = true; // erneut spielen funktioniert noch nicht
 while (playagain)
 {
     playagain = false; // wird noch entfernt
-    bool realgame = false, spieler = true;
+    bool realgame = false, spieler = true, Aiopponent = true ;
     int counter = 1, secondcounter = 0, one = 0, two = 3, three = -1, piece = 0, moves = 0;
     string[] data = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
     string aa = " ; ; ; ; ; ; ; ; ";
 
 
     //////////////////////////////////////////////////////
+    Console.WriteLine("1vs1 (1) | VS AI (2)");
+    if (Console.ReadLine() == "1" ? Aiopponent = false : Aiopponent = true);
+    Console.Clear();
     Console.WriteLine("Startanimation? (y/n)");
+
     if (Console.ReadLine().ToLower() == "y") //startanmation
     {
         for (int c = 0; c < 13; c++, one = 0, two = 3, counter = 1, secondcounter = 0)
@@ -94,24 +98,25 @@ while (playagain)
             case "input":
                 Console.WriteLine(" ╚╦══════╗                 ╚═══╗    ╔══╝");
                 Console.WriteLine("  ╠>     ║                 ╔═══╩════╩══╗");
-                Console.Write("  ╚══════╝                 ║ "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(spieler ? "Spieler 1" : "Spieler 2"); Console.ForegroundColor = ConsoleColor.White; Console.Write(" ╠╣\n");
+                    Console.Write("  ╚══════╝                 ║ "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(spieler ? "Spieler 1" : "Spieler 2"); Console.ForegroundColor = ConsoleColor.White; Console.Write(" ║\n");
                 Console.WriteLine("                           ╚═══════════╝");
                 break;
         }
         Console.SetCursorPosition(6, 17);
         Console.ForegroundColor = ConsoleColor.Red;
-        switch (Console.ReadLine())
+
+        switch (!spieler && Aiopponent? AI() : Console.ReadLine())
         {
-            case "1": data[0] = spieler ? "x" : "o"; moves++; break;
-            case "2": data[1] = spieler ? "x" : "o"; moves++; break;
-            case "3": data[2] = spieler ? "x" : "o"; moves++; break;
-            case "4": data[3] = spieler ? "x" : "o"; moves++; break;
-            case "5": data[4] = spieler ? "x" : "o"; moves++; break;
-            case "6": data[5] = spieler ? "x" : "o"; moves++; break;
-            case "7": data[6] = spieler ? "x" : "o"; moves++; break;
-            case "8": data[7] = spieler ? "x" : "o"; moves++; break;
-            case "9": data[8] = spieler ? "x" : "o"; moves++; break;
-            default: Console.Clear(); Console.WriteLine("Ungültige eingabe!"); Thread.Sleep(2000); Console.Clear(); preprint(); break;
+            case "1": if (data[0] != " ") { wronginput(); break; } data[0] = spieler ? "x" : "o"; moves++; break;
+            case "2": if (data[1] != " ") { wronginput(); break; } data[1] = spieler ? "x" : "o"; moves++; break;
+            case "3": if (data[2] != " ") { wronginput(); break; } data[2] = spieler ? "x" : "o"; moves++; break;
+            case "4": if (data[3] != " ") { wronginput(); break; } data[3] = spieler ? "x" : "o"; moves++; break;
+            case "5": if (data[4] != " ") { wronginput(); break; } data[4] = spieler ? "x" : "o"; moves++; break;
+            case "6": if (data[5] != " ") { wronginput(); break; } data[5] = spieler ? "x" : "o"; moves++; break;
+            case "7": if (data[6] != " ") { wronginput(); break; } data[6] = spieler ? "x" : "o"; moves++; break;
+            case "8": if (data[7] != " ") { wronginput(); break; } data[7] = spieler ? "x" : "o"; moves++; break;
+            case "9": if (data[8] != " ") { wronginput(); break; } data[8] = spieler ? "x" : "o"; moves++; break;
+            default: wronginput(); break;
         }
 
         Console.ForegroundColor = ConsoleColor.White;
@@ -120,6 +125,19 @@ while (playagain)
         checkwin();
         Console.Clear();
         preprint();
+    }
+
+    void wronginput() 
+    { 
+        Console.Clear(); 
+
+        if(spieler) {
+            Console.WriteLine("Ungültige eingabe!");
+            Thread.Sleep(2000);
+            Console.Clear();
+        }
+        
+        preprint(); 
     }
 
     void print(string str)
@@ -206,6 +224,14 @@ while (playagain)
         //resetvars();
         //if (Console.ReadLine().ToLower() == "y") { playagain = true; } else { playagain = false; }
         //Console.Clear();
+    }
+
+
+    string AI()
+    {
+        Random rnd = new Random();
+        
+        return rnd.Next(0,9).ToString();
     }
 }
 //spielende
