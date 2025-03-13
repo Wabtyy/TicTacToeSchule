@@ -137,13 +137,13 @@ while (playagain)
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write(" ║\n");
 
-                Console.WriteLine("╚══════════════════════════════════════════════════════════╝");
+                Console.WriteLine("╚═══════════════════════╦══════════════════════════════════╝");
                 return "";
 
             case "menu":
                 menu("logo");
                 Console.WriteLine("           ╔════════════╩══════════════╗");
-                Console.WriteLine("  ╔══════════════════╗                 ║");
+                Console.WriteLine("  ╔════════╩═════════╗                 ║");
                 Console.Write("  ║ ");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("      1VS1      ");
@@ -169,7 +169,7 @@ while (playagain)
                 menu("logo");
 
                 Console.WriteLine("           ╔════════════╩═════════╗");
-                Console.WriteLine("  ╔══════════════════╗            ║");
+                Console.WriteLine("  ╔════════╩═════════╗            ║");
                 Console.Write("  ║");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write(" Start-Anim (y/n)");
