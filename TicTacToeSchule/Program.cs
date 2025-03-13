@@ -14,7 +14,7 @@ while (playagain)
 
 
     string check= menu("menu").ToLower().Replace(" ","").Replace("1vs1", "1").Replace("level1","2");
-    if (check == "1" ? Aiopponent = false : Aiopponent = true) ;
+    if (check == "1" ? Aiopponent = false : Aiopponent = true);
     Console.Clear();
 
     if (menu("startanimation?").ToLower() == "y") //startanmation
@@ -102,7 +102,7 @@ while (playagain)
                 Console.WriteLine("  ╠>     ║                 ╔═══╩════╩══╗");
                     Console.Write("  ╚══════╝                 ║ "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(spieler ? "Spieler 1" : "Spieler 2"); Console.ForegroundColor = ConsoleColor.White; Console.Write(" ║\n");
                 Console.WriteLine("                           ╚═══════════╝");
-            return "";
+            break;
 
             case "logo":
                 Console.ForegroundColor = ConsoleColor.Magenta;
